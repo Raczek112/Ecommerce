@@ -11,6 +11,7 @@ class Customer(models.Model):
     def __str__(self) -> str:
         return self.name
 
+
 class Product(models.Model):
     title = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=6, decimal_places=2)
@@ -19,14 +20,15 @@ class Product(models.Model):
     def __str__(self) -> str:
         return self.title
 
-
     def get_absolute_url(self):
-        return reverse('product-details', kwargs={'pk': self.pk})
+        return reverse("product-details")
+
 
 class Cart(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
     user = models.ForeignKey(Customer, on_delete=models.CASCADE)
     quantity = models.IntegerField()
+
 
 class Order(Cart):
     adress = models.CharField(max_length=200)
