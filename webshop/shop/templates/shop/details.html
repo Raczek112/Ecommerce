@@ -10,12 +10,13 @@
         <div class="box-element product">
         </div>
     </div>
+    {% if item %}
     <div class="col-lg-8">
-        <h1>Product name</h1>
+        <h1>{{ item.title }}</h1>
         <h3>Product Category </h3>
-        <h3>Product Price</h3>
-
+        <h3>{{ item.price }}</h3>
     </div>
+    {% endif %}
 
 </div>
 {% endblock content %}
